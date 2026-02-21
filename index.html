@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K&A | Open House</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="#home" class="brand">K&A</a>
+    <button
+      id="menu-toggle"
+      class="menu-toggle"
+      type="button"
+      aria-label="Abrir menu"
+      aria-controls="primary-nav"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="primary-nav" class="site-nav">
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#historia">Nossa história</a></li>
+        <li><a href="#presentes">Lista de presentes</a></li>
+        <li><a href="#endereco">Endereço</a></li>
+        <li><a href="#mensagens">Mensagem</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <p class="hero-logo">K&A</p>
+      <h1>Open House</h1>
+      <p class="hero-subtitle">Nossa nova casa, nosso novo capítulo.</p>
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="time-block"><span id="days">00</span><small>dias</small></div>
+        <div class="time-block"><span id="hours">00</span><small>horas</small></div>
+        <div class="time-block"><span id="minutes">00</span><small>min</small></div>
+        <div class="time-block"><span id="seconds">00</span><small>seg</small></div>
+      </div>
+      <p class="target-date">Contagem regressiva para 28/03/2026</p>
+    </section>
+
+    <section id="historia" class="section story">
+      <div class="story-grid">
+        <div class="story-photo reveal-left reveal-delay-1">
+          <img
+            src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop"
+            alt="Foto do casal"
+            loading="lazy"
+            decoding="async"
+            width="960"
+            height="1200"
+          />
+        </div>
+        <article class="story-text">
+          <h2 class="reveal-down reveal-delay-2">Nossa história</h2>
+          <p class="reveal-right reveal-delay-3">
+            Entre encontros, risadas e planos, construímos um caminho com carinho e parceria.
+            Agora abrimos as portas do nosso novo lar para celebrar esse momento com quem faz
+            parte da nossa vida.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="presentes" class="section gifts">
+      <h2>Lista de presentes</h2>
+      <p>Se quiser nos presentear, preparamos duas opções em uma página dedicada.</p>
+      <a class="button" href="presentes.html" id="gift-link">Ver opções de presentes</a>
+    </section>
+
+    <section id="endereco" class="section address">
+      <h2>Endereço</h2>
+      <p>Rua Exemplo, 123 - Bairro Exemplo</p>
+      <p>Santo André - SP</p>
+      <p>CEP 09000-000</p>
+    </section>
+
+    <section id="mensagens" class="section messages">
+      <h2>Mensagens</h2>
+      <p>Deixe uma mensagem para nós. Ao enviar, o seu aplicativo de e-mail abrirá para confirmação.</p>
+      <form id="message-form" class="message-form">
+        <label for="guest-name">Nome</label>
+        <input id="guest-name" name="guest-name" type="text" required />
+
+        <label for="guest-message">Mensagem</label>
+        <textarea id="guest-message" name="guest-message" rows="5" required></textarea>
+
+        <button class="button" type="submit">Enviar mensagem</button>
+      </form>
+      <p id="form-status" class="form-status"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

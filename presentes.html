@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K&A | Presentes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html#home" class="brand">K&A</a>
+    <button
+      id="menu-toggle"
+      class="menu-toggle"
+      type="button"
+      aria-label="Abrir menu"
+      aria-controls="primary-nav"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="primary-nav" class="site-nav">
+      <ul class="nav-links">
+        <li><a href="index.html">Voltar ao início</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section gifts-page">
+      <h1 class="gifts-title">Presentes</h1>
+      <p class="gifts-subtitle">Escolha a forma que preferir para nos presentear.</p>
+
+      <div class="gift-options-grid">
+        <article class="gift-option-card">
+          <h2>Lista na Amazon</h2>
+          <p>Abra nossa lista de desejos e escolha um item para o nosso novo lar.</p>
+          <a class="button" href="https://www.amazon.com.br/hz/wishlist/ls/QFQ7Z4H7HN00?ref_=wl_share" target="_blank" rel="noopener noreferrer">Abrir lista da Amazon</a>
+        </article>
+
+        <article class="gift-option-card">
+          <h2>Presentear com PIX</h2>
+          <p>Clique para visualizar a chave PIX e o QR Code.</p>
+          <button class="button" id="show-pix" type="button">Ver chave e QR Code</button>
+
+          <div id="pix-box" class="pix-box hidden" aria-live="polite">
+            <p><strong>Chave PIX:</strong> <span id="pix-key">seu-pix@exemplo.com</span></p>
+            <button class="button button-small" id="copy-pix" type="button">Copiar chave</button>
+            <div class="qr-placeholder" role="img" aria-label="QR Code para pagamento PIX">
+              QR Code PIX
+            </div>
+            <p class="pix-tip">Substitua pelo QR Code real quando quiser.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="presentes.js"></script>
+</body>
+</html>
