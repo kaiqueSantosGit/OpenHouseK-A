@@ -39,21 +39,22 @@
     <section id="home" class="hero section">
       <p class="hero-logo">K&A</p>
       <h1>Open House</h1>
-      <p class="hero-subtitle">Nossa nova casa, nosso novo capítulo.</p>
+      <p class="hero-subtitle">Bem vindos ao novo capitulo da nossa historia.</p>
+      <p class="hero-description">Com imenso carinho preparamos esse momento especial para celebrar nosso novo lar, e queremos que as pessoas mais importantes na nossa vida estejam presentes nesse momento tão especial!</p>
       <div class="countdown" id="countdown" aria-live="polite">
         <div class="time-block"><span id="days">00</span><small>dias</small></div>
         <div class="time-block"><span id="hours">00</span><small>horas</small></div>
         <div class="time-block"><span id="minutes">00</span><small>min</small></div>
         <div class="time-block"><span id="seconds">00</span><small>seg</small></div>
       </div>
-      <p class="target-date">Contagem regressiva para 28/03/2026</p>
+      <p class="target-date">Contagem regressiva para conhecerem o nosso lar </p>
     </section>
 
     <section id="historia" class="section story">
       <div class="story-grid">
         <div class="story-photo reveal-left reveal-delay-1">
           <img
-            src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop"
+            src="images/nossa-foto.jpeg"
             alt="Foto do casal"
             loading="lazy"
             decoding="async"
@@ -64,9 +65,10 @@
         <article class="story-text">
           <h2 class="reveal-down reveal-delay-2">Nossa história</h2>
           <p class="reveal-right reveal-delay-3">
-            Entre encontros, risadas e planos, construímos um caminho com carinho e parceria.
-            Agora abrimos as portas do nosso novo lar para celebrar esse momento com quem faz
-            parte da nossa vida.
+            Todos acham imprecionante quando falamos que estamos já a 10 anos juntos, nos conhecendo na escola mesmo estudando em escolas diferentes e sempre perguntam, Quando vocês vão casar, quando so fundo a gente nunca teve pressa pois sempre queriamos que fosse do sosso jeitinho, perfeito e feliz
+          </p>
+          <p class="reveal-right reveal-delay-4">
+            E agora depois de tanto tempo, finalmente chegou a hora de dar mais um passo importante na nossa história, e queremos muito que vocês estejam presentes nesse momento tão especial para nós.
           </p>
         </article>
       </div>
@@ -80,20 +82,34 @@
 
     <section id="endereco" class="section address">
       <h2>Endereço</h2>
-      <p>Rua Exemplo, 123 - Bairro Exemplo</p>
+      <p>Bem Vindos ao Ap: 133</p>
+      <p>Avenida Artur de Queirós 196 - Casa Branca</p>
       <p>Santo André - SP</p>
-      <p>CEP 09000-000</p>
+      <p>CEP 09015-510</p>
     </section>
 
     <section id="mensagens" class="section messages">
       <h2>Mensagens</h2>
-      <p>Deixe uma mensagem para nós. Ao enviar, o seu aplicativo de e-mail abrirá para confirmação.</p>
-      <form id="message-form" class="message-form">
+      <p>Deixe uma mensagem para nós. Ela será enviada por e-mail para o Kaique e para a Aline.</p>
+      <form
+        id="message-form"
+        class="message-form"
+        action="https://formsubmit.co/Kaiqueg.sant@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_cc" value="alinegordado@gmail.com" />
+        <input type="hidden" name="_subject" value="Nova mensagem - Open House K&A" />
+        <input type="hidden" name="_next" value="https://kaiquesantosgit.github.io/OpenHouseK-A/?enviado=1#mensagens" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
         <label for="guest-name">Nome</label>
-        <input id="guest-name" name="guest-name" type="text" required />
+        <input id="guest-name" name="nome" type="text" required />
+
+        <label for="guest-email">E-mail</label>
+        <input id="guest-email" name="email" type="email" required />
 
         <label for="guest-message">Mensagem</label>
-        <textarea id="guest-message" name="guest-message" rows="5" required></textarea>
+        <textarea id="guest-message" name="mensagem" rows="5" required></textarea>
 
         <button class="button" type="submit">Enviar mensagem</button>
       </form>

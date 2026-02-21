@@ -86,28 +86,12 @@ revealElements.forEach((element) => observer.observe(element));
 
 const messageForm = document.getElementById("message-form");
 const formStatus = document.getElementById("form-status");
-const recipientEmail = "seuemail@exemplo.com";
 
 if (messageForm && formStatus) {
-  messageForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const name = document.getElementById("guest-name").value.trim();
-    const message = document.getElementById("guest-message").value.trim();
-
-    if (!name || !message) {
-      formStatus.textContent = "Preencha nome e mensagem.";
-      return;
-    }
-
-    const subject = encodeURIComponent("Mensagem para K&A - Open House");
-    const body = encodeURIComponent(`Nome: ${name}\n\nMensagem:\n${message}`);
-    const mailtoUrl = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-
-    window.location.href = mailtoUrl;
-    formStatus.textContent = "Seu app de e-mail foi aberto para concluir o envio.";
-    messageForm.reset();
-  });
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("enviado") === "1") {
+    formStatus.textContent = "Mensagem enviada com sucesso. Obrigado pelo carinho.";
+  }
 }
 
 initMobileMenu();
