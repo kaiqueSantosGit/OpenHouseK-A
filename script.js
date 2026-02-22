@@ -33,7 +33,10 @@ function initRsvpModal() {
     return;
   }
 
-  const endpoint = form.dataset.endpoint?.trim();
+  const endpointRaw = form.getAttribute("data-endpoint") || "";
+  const endpoint = endpointRaw.trim();
+  let selectedChoice = "";
+  const choiceButtons = form.querySelectorAll("[data-rsvp-choice]");
 
   function openModal() {
     modal.classList.add("is-open");
@@ -47,6 +50,12 @@ function initRsvpModal() {
 
   openButton.addEventListener("click", openModal);
   closeButton.addEventListener("click", closeModal);
+
+  choiceButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedChoice = button.getAttribute("data-rsvp-choice") || "";
+    });
+  });
 
   modal.addEventListener("click", (event) => {
     const target = event.target;
@@ -64,10 +73,12 @@ function initRsvpModal() {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const submitter = event.submitter;
-    const choice = submitter?.dataset.rsvpChoice;
+    let choice = selectedChoice;
+    if (!choice && document.activeElement) {
+      choice = document.activeElement.getAttribute("data-rsvp-choice") || "";
+    }
     const nameInput = document.getElementById("rsvp-name");
-    const name = nameInput?.value.trim() || "";
+    const name = nameInput ? nameInput.value.trim() : "";
 
     if (!name || !choice) {
       status.textContent = "Preencha o nome e escolha uma opção.";
@@ -95,6 +106,7 @@ function initRsvpModal() {
 
       status.textContent = "Resposta enviada. Obrigado por confirmar.";
       form.reset();
+      selectedChoice = "";
       setTimeout(closeModal, 1000);
     } catch (error) {
       status.textContent = "Não foi possível enviar agora. Tente novamente.";
