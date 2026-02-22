@@ -48,6 +48,7 @@
         <div class="time-block"><span id="seconds">00</span><small>seg</small></div>
       </div>
       <p class="target-date">Contagem regressiva para conhecerem o nosso lar </p>
+      <button id="open-rsvp-modal" class="button rsvp-cta" type="button">Confirme sua presença</button>
     </section>
 
     <section id="historia" class="section story">
@@ -116,6 +117,26 @@
       <p id="form-status" class="form-status"></p>
     </section>
   </main>
+
+  <div id="rsvp-modal" class="rsvp-modal" aria-hidden="true">
+    <div class="rsvp-overlay" data-close-rsvp="true"></div>
+    <section class="rsvp-dialog" role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
+      <button class="rsvp-close" id="close-rsvp-modal" type="button" aria-label="Fechar popup">x</button>
+      <h2 id="rsvp-title">Confirme sua presença</h2>
+      <form id="rsvp-form" class="rsvp-form" data-endpoint="https://script.google.com/macros/s/AKfycbzOJ_vMH5sHVoaRMOlvfXFdFipPxWr_v-kgT1MVAQ9-u5IU6_UCSeJZX4s9vLrhUSOwQQ/exec">
+        <label for="rsvp-name">Nome</label>
+        <input id="rsvp-name" name="nome" type="text" placeholder="Seu nome ou do casal" required />
+
+        <div class="rsvp-actions">
+          <button class="button" type="submit" data-rsvp-choice="Confirmar presença">Confirmar presença</button>
+          <button class="button" type="submit" data-rsvp-choice="Não vou, mas vou comprar o presente ;)">
+            Não vou, mas vou comprar o presente ;)
+          </button>
+        </div>
+      </form>
+      <p id="rsvp-status" class="form-status"></p>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>

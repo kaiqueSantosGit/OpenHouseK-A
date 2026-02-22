@@ -117,6 +117,10 @@ body {
   margin-top: 0.35rem;
 }
 
+.rsvp-cta {
+  margin-top: 0.9rem;
+}
+
 .hero-subtitle,
 .target-date,
 .section p {
@@ -255,6 +259,73 @@ h2 {
   margin-top: 0.9rem;
   min-height: 1.2rem;
   color: var(--muted);
+}
+
+.rsvp-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.rsvp-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.rsvp-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.35);
+}
+
+.rsvp-dialog {
+  position: relative;
+  width: min(560px, 100%);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.3rem;
+  z-index: 1;
+}
+
+.rsvp-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.rsvp-form {
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.rsvp-form input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-family: inherit;
+}
+
+.rsvp-actions {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
 }
 
 .reveal-left,
@@ -511,6 +582,10 @@ h2 {
 
   .section {
     padding: 3.8rem 0;
+  }
+
+  .rsvp-dialog {
+    padding: 1rem;
   }
 
   .gift-options-grid {

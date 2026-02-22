@@ -22,6 +22,86 @@ function initMobileMenu() {
   });
 }
 
+function initRsvpModal() {
+  const modal = document.getElementById("rsvp-modal");
+  const openButton = document.getElementById("open-rsvp-modal");
+  const closeButton = document.getElementById("close-rsvp-modal");
+  const form = document.getElementById("rsvp-form");
+  const status = document.getElementById("rsvp-status");
+
+  if (!modal || !openButton || !closeButton || !form || !status) {
+    return;
+  }
+
+  const endpoint = form.dataset.endpoint?.trim();
+
+  function openModal() {
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  openButton.addEventListener("click", openModal);
+  closeButton.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target instanceof HTMLElement && target.dataset.closeRsvp === "true") {
+      closeModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitter = event.submitter;
+    const choice = submitter?.dataset.rsvpChoice;
+    const nameInput = document.getElementById("rsvp-name");
+    const name = nameInput?.value.trim() || "";
+
+    if (!name || !choice) {
+      status.textContent = "Preencha o nome e escolha uma opção.";
+      return;
+    }
+
+    if (!endpoint) {
+      status.textContent = "Falta configurar o endpoint da lista de presença.";
+      return;
+    }
+
+    const payload = new URLSearchParams({
+      nome: name,
+      resposta: choice,
+      data: new Date().toISOString(),
+    });
+
+    try {
+      await fetch(endpoint, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload,
+      });
+
+      status.textContent = "Resposta enviada. Obrigado por confirmar.";
+      form.reset();
+      setTimeout(closeModal, 1000);
+    } catch (error) {
+      status.textContent = "Não foi possível enviar agora. Tente novamente.";
+    }
+  });
+}
+
 const targetDate = new Date("2026-03-28T00:00:00");
 
 const daysEl = document.getElementById("days");
@@ -95,3 +175,4 @@ if (messageForm && formStatus) {
 }
 
 initMobileMenu();
+initRsvpModal();
