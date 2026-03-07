@@ -41,13 +41,13 @@
       <h1>Open House</h1>
       <p class="hero-subtitle">Bem vindos ao novo capitulo da nossa historia.</p>
       <p class="hero-description">Com imenso carinho preparamos esse momento especial para celebrar nosso novo lar, e queremos que as pessoas mais importantes na nossa vida estejam presentes nesse momento tão especial!</p>
-      <div class="countdown" id="countdown" aria-live="polite">
+      <p class="target-date">Data do evento: <strong>Em breve</strong></p>
+      <div class="countdown" id="countdown" data-mode="coming-soon" aria-live="polite">
         <div class="time-block"><span id="days">00</span><small>dias</small></div>
         <div class="time-block"><span id="hours">00</span><small>horas</small></div>
         <div class="time-block"><span id="minutes">00</span><small>min</small></div>
         <div class="time-block"><span id="seconds">00</span><small>seg</small></div>
       </div>
-      <p class="target-date">Contagem regressiva para conhecerem o nosso lar </p>
       <button id="open-rsvp-modal" class="button rsvp-cta" type="button">Confirme sua presença</button>
     </section>
 
@@ -77,7 +77,7 @@
 
     <section id="presentes" class="section gifts">
       <h2>Lista de presentes</h2>
-      <p>Se quiser nos presentear, preparamos duas opções em uma página dedicada.</p>
+      <p>Preparamos uma lista de presentes para completar o nosso lar, Todo seu carinho é bem vindo!</p>
       <a class="button" href="presentes.html" id="gift-link">Ver opções de presentes</a>
     </section>
 
@@ -123,7 +123,7 @@
     <section class="rsvp-dialog" role="dialog" aria-modal="true" aria-labelledby="rsvp-title">
       <button class="rsvp-close" id="close-rsvp-modal" type="button" aria-label="Fechar popup">x</button>
       <h2 id="rsvp-title">Confirme sua presença</h2>
-      <form id="rsvp-form" class="rsvp-form" data-endpoint="https://script.google.com/macros/s/AKfycbyrX_LGeQbLt_ki1WVpo2rLzkd4AN9wNlJiWqJpoq2zHc5qSE8jT4HRKT-4WvTHl-DbIQ/exec">
+      <form id="rsvp-form" class="rsvp-form" data-endpoint="https://script.google.com/macros/s/AKfycby_AU4fnzz6fOpyKQDsEETa13AT3hoex2fzKhpOIrA-JJUZEjtjV98l6XDLLsB07eT18g/exec">
         <label for="rsvp-name">Nome</label>
         <input id="rsvp-name" name="nome" type="text" placeholder="Seu nome ou do casal" required />
 

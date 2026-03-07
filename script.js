@@ -91,18 +91,33 @@ function initRsvpModal() {
     }
 
     const payload = new URLSearchParams({
+      action: "rsvp",
       nome: name,
       resposta: choice,
       data: new Date().toISOString(),
     });
 
     try {
-      await fetch(endpoint, {
+      const response = await fetch(endpoint, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: payload,
       });
+
+      if (!response.ok) {
+        throw new Error("Falha no envio");
+      }
+
+      let data = null;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        data = { ok: true };
+      }
+
+      if (data && data.ok === false) {
+        throw new Error(data.error || "Falha no envio");
+      }
 
       status.textContent = "Resposta enviada. Obrigado por confirmar.";
       form.reset();
@@ -120,6 +135,7 @@ const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
+const countdownEl = document.getElementById("countdown");
 
 function pad(value) {
   return String(value).padStart(2, "0");
@@ -156,25 +172,38 @@ function updateCountdown() {
   secondsEl.textContent = pad(seconds);
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+if (
+  daysEl &&
+  hoursEl &&
+  minutesEl &&
+  secondsEl &&
+  countdownEl &&
+  countdownEl.getAttribute("data-mode") !== "coming-soon"
+) {
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
 
 const revealElements = document.querySelectorAll(".reveal-left, .reveal-right, .reveal-down");
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-      } else {
-        entry.target.classList.remove("is-visible");
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
 
-revealElements.forEach((element) => observer.observe(element));
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("is-visible"));
+}
 
 const messageForm = document.getElementById("message-form");
 const formStatus = document.getElementById("form-status");

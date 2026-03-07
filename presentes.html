@@ -35,12 +35,14 @@
     <section class="section gifts-page">
       <h1 class="gifts-title">Presentes</h1>
       <p class="gifts-subtitle">Escolha a forma que preferir para nos presentear.</p>
+      <p class="gifts-description">A lista da Amazon contem as opções com a estetica do jeitinho que queremos e a praticidade de já estar direto no site, mas fiquem a vontade para escolher o melhor lugar de compra. Só não esquece da nossa estetica:</p>
 
       <div class="gift-options-grid">
         <article class="gift-option-card">
           <h2>Lista na Amazon</h2>
           <p>Abra nossa lista de desejos e escolha um item para o nosso novo lar.</p>
           <a class="button" href="https://www.amazon.com.br/hz/wishlist/ls/QFQ7Z4H7HN00?ref_=wl_share" target="_blank" rel="noopener noreferrer">Abrir lista da Amazon</a>
+          <button class="button" id="open-gift-modal" type="button">Já comprou? Confirmar presente</button>
         </article>
 
         <article class="gift-option-card">
@@ -118,6 +120,26 @@
       </section>
     </section>
   </main>
+
+  <div id="gift-modal" class="rsvp-modal" aria-hidden="true">
+    <div class="rsvp-overlay" data-close-gift="true"></div>
+    <section class="rsvp-dialog" role="dialog" aria-modal="true" aria-labelledby="gift-title">
+      <button class="rsvp-close" id="close-gift-modal" type="button" aria-label="Fechar popup">x</button>
+      <h2 id="gift-title">Confirmar presente</h2>
+      <form id="gift-form" class="rsvp-form" data-endpoint="https://script.google.com/macros/s/AKfycby_AU4fnzz6fOpyKQDsEETa13AT3hoex2fzKhpOIrA-JJUZEjtjV98l6XDLLsB07eT18g/exec">
+        <label for="gift-name">Nome</label>
+        <input id="gift-name" name="nome" type="text" placeholder="Seu nome" required />
+
+        <label for="gift-item">Presente</label>
+        <select id="gift-item" name="presente_id" required>
+          <option value="">Carregando presentes...</option>
+        </select>
+
+        <button class="button" type="submit">Confirmar presente</button>
+      </form>
+      <p id="gift-status" class="form-status"></p>
+    </section>
+  </div>
 
   <script src="presentes.js"></script>
 </body>
