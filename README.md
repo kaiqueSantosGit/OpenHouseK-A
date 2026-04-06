@@ -4,7 +4,7 @@ Site estatico criado para celebrar o novo lar do casal Kaique e Aline, reunindo 
 
 O projeto nasce com uma proposta simples: transformar um convite tradicional em uma experiencia digital mais acolhedora, pratica e personalizada. Em vez de depender de varios links soltos ou mensagens separadas, o site centraliza tudo o que os convidados precisam para participar do momento e interagir com o casal.
 
-Esse texto de conceito pode ser lapidado depois com mais detalhes emocionais ou pessoais, mas a base do projeto ja comunica bem a ideia de um convite intimo, funcional e visualmente alinhado com a identidade do casal.
+
 
 ## Visao geral
 
